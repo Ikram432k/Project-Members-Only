@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div.formView
+    form(method='POST' action='')
+      p=title
+        div.form-group
+          label(for='username') Username:
+          input#name.form-control(type='text', placeholder='Enter your name' name='username' )
+        div.form-group
+          label(for='password') Password:
+          input#password.form-control(type='password', placeholder='Enter your password' name='password' )
+        div.form-group
+          label(for="confirmPassword") Confirm Password: 
+          input#confirmPassword(type="password" name="confirmPassword" required="true")
+          if (passwordConfirmationError)
+            p(style="color: red;") #{passwordConfirmationError}
+        div.form-btn
+          button.btn.btn-primary(type='submit') Submit 
+          p
+            a.delete(href='/') cancel
+  if (error)
+    p #{error}
