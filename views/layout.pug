@@ -19,7 +19,7 @@ html
         //- If User IS logged in
         else 
           ul
-            a(href="/create-message") 
+            a(href="/createMessage") 
               li Create Message
             a(href="/member") 
               li Member
@@ -28,6 +28,4 @@ html
             a(href="/log-out") 
               li Log out 
       
-      if (user)
-        p.username-layout User: #{user.username} 
       block content
