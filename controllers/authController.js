@@ -24,7 +24,7 @@ exports.userSign_in_post =[
             if (findUser.length>0){
                 return res.render("sign-upForm",{error:"User already exists"});
             }
-            bcrypt.hash("somePassword", 10, (err, hashedPassword) => {
+            bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
                 if(err){
                     return next(err);
                 }
@@ -47,14 +47,17 @@ exports.userSign_in_post =[
     }
 ];
 exports.userLogin_get =(req,res)=>{
+    if (res.locals.currentUser) return res.redirect("/"); 
     res.render("loginForm",{title:"Login"})
 }
 
 exports.userLogin_post = passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/log-in"
-  })
-
-exports.userLogout =(req,res)=>{
-    res.send("not implemented");
-}
+    failureRedirect: "/log-in",
+  });
+exports.userLogout =(req, res, next)=>{
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+  }
