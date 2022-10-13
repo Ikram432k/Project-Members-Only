@@ -6,6 +6,7 @@ const Message = require("../controllers/messageController");
 
 /* GET home page. */
 router.get("/",Message.index);
+router.post("/", Message.delete_message_post);
 
 /*********SIGN-UP*********/
 router.get('/sign-up',AuthUser.userSign_in_get);
@@ -15,11 +16,11 @@ router.post('/sign-up',AuthUser.userSign_in_post);
 router.get("/log-in",AuthUser.userLogin_get);
 router.post("/log-in",AuthUser.userLogin_post);
 
-router.post("/log-out",AuthUser.userLogout);
+router.get("/log-out",AuthUser.userLogout);
 
 /************MESSAGE***********/
 router.get("/createMessage",Message.create_message_get);
-router.post("/createMessage-post",Message.create_message_post);
+router.post("/createMessage",Message.create_message_post);
 
 /************BECOME MEMBER*************/
 router.get("/member",User.member_get);
