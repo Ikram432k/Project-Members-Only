@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div.formView
+    form(method='POST' action='')
+      p=user.username
+      p=user.id
+
+        div.form-group
+          label(for='title') Title:
+          input#title.form-control(type='text', placeholder='title of message' name='title' )
+        div.form-group
+          label(for='text') Text:
+          input#txet.form-control(type='text', placeholder='Enter your message' name='text' )
+        div.form-btn
+          button.btn.btn-primary(type='submit') Submit 
+          p
+            a.delete(href='/') cancel
+      if errors
+        ul
+          for error in errors
+            li!= error.msg
