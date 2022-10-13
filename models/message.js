@@ -8,7 +8,7 @@ const messageSchema = new Schema({
     text:{type:String,required:true,maxLength:500},
     timeStamp:{type: Date,default: Date.now,required:true}
 });
-messageSchema.virtual("date").get(()=>{
-    return DateTime.fromJSDate(this.timeStamp).toFormat("yyyy-MM-dd, HH:mm");
-});
+messageSchema.virtual("date").get(function () {
+    return DateTime.fromJSDate(this.timeStamp).toLocaleString(DateTime.DATE_MED)
+  });
 module.exports = mongoose.model("Message",messageSchema);
