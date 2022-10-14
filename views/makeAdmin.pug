@@ -17,5 +17,7 @@ block content
       p #{errors}
 
   else
-    div(style="width: 50%; margin: 0 auto; text-align: center")
-      h2 You are already an admin!
+    div.auth-form
+      h2  You're a admin!
+      button.cancel
+        a.delete(href='/') Back to Home
