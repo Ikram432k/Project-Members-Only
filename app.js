@@ -12,8 +12,6 @@ const session = require("express-session"); // Dependency of passport.js
 
 // Establish database connection
 const mongoose = require("mongoose");
-// const dev_db_url = process.env.process.env.MONGODB_URI
-// const mongoDB = process.env.MONGODB_URI || dev_db_url;
 const mongoDB = process.env.dbkey
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -51,7 +49,7 @@ passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) => User.findById(id, (err, user) => done(err, user)));
 
 // Secret value should be a process env value
-app.use(session({ secret: "jojo", resave: false, saveUninitialized: true }));
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
