@@ -16,5 +16,7 @@ block content
       p #{errors}
 
   else
-    div(style="width: auto; margin: 0 auto; text-align: center")
+    div.auth-form
       h2  You're a member!
+      button.cancel
+        a.delete(href='/') Back to Home
