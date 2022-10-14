@@ -8,24 +8,24 @@ html
     div.container
       nav.navbar 
         a(href="/").title
-          h3 members only
+          h3 Members Only
         //- If User is NOT logged in
         if (!user)
           ul 
             a(href="/log-in") 
-              li Log in
+              li Log-in
             a(href="/sign-up")
-              li Sign up
+              li Sign-up
         //- If User IS logged in
         else 
           ul
             a(href="/createMessage") 
-              li Create Message
+              li New Message
             a(href="/member") 
               li Member
             a(href="/admin")  
               li Admin
             a(href="/log-out") 
-              li Log out 
+              li Log-out 
       
       block content
