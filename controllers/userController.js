@@ -23,7 +23,7 @@ exports.member_post = [
         user.member = true;
         User.findByIdAndUpdate(res.locals.currentUser._id, user, {}, (err) => {
             if (err) return next(err);
-            return res.redirect("/member");
+            return res.redirect("/");
           });
     }
 ]
