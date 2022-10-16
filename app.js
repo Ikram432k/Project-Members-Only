@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -11,10 +11,13 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session"); // Dependency of passport.js
 const compression = require("compression");
 const helmet = require("helmet");
+const dotenv = require("dotenv");
 
 // Establish database connection
+const result = dotenv.config()
+
 const mongoose = require("mongoose");
-const mongoDB = process.env.dbkey
+const mongoDB = result.parsed.dbkey;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Import routes
